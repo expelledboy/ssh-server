@@ -8,6 +8,13 @@ _default:
 _generate-ssh-keys:
     ssh-keygen -t rsa -N "" -f ./id_rsa
 
+_clean-ssh-keys:
+    rm -f ./{id_rsa,id_rsa.pub}
+
+# Run bats tests
+test:
+    bats tests
+
 # Build docker image
 build:
     docker buildx build -t {{docker_tag}} .
@@ -20,8 +27,8 @@ ssh_port := env_var_or_default("SSH_PORT", "2222")
 ssh_key := env_var_or_default("SSH_KEY", "~/.ssh/id_rsa")
 
 # Run docker image
-run:
-    docker run -it --rm \
+start:
+    docker run -d --rm \
         --name ssh-server \
         -p {{ssh_port}}:22 \
         -v {{ssh_key}}.pub:/authorized_ssh_keys:ro \

@@ -11,6 +11,10 @@
       devShell = pkgs.mkShell {
         buildInputs = with pkgs; [
           just
+          (bats.withLibraries (libexec: with libexec; [
+            bats-support
+            bats-assert
+          ]))
         ];
       };
     }

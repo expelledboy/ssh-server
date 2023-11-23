@@ -7,7 +7,6 @@
 ```bash
 export SSH_PORT=2222
 
-
 docker run -it --rm
     --name ssh-server
     -p ${SSH_PORT}:22
