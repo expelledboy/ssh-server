@@ -12,9 +12,6 @@
         buildInputs = with pkgs; [
           just
         ];
-        shellHook = ''
-          just --list --unsorted
-        '';
       };
     }
   );

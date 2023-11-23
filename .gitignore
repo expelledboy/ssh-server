@@ -1,1 +1,4 @@
 /.direnv
+/id_rsa
+/id_rsa.pub
+/.env

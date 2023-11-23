@@ -1,0 +1,8 @@
+# Enable public key authentication
+PubkeyAuthentication yes
+
+# Disable password authentication
+PasswordAuthentication no
+
+# Enable SCP
+AllowSCP yes

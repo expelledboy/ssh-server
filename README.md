@@ -28,4 +28,4 @@ scp -P 2222 file.txt ssh@localhost:/home/ssh/
 
 | Variable | Description | Default value |
 | -------- | ----------- | ------------- |
-| `AUTHORIZED_KEYS` | Authorized ssh keys | required |
+| `AUTHORIZED_KEYS` | Authorized ssh keys, line separated | required |
