@@ -5,23 +5,26 @@
 **Run the container**
 
 ```bash
-docker run -d -rm
+export SSH_PORT=2222
+
+
+docker run -it --rm
     --name ssh-server
-    -p 2222:22
-    -e AUTHORIZED_KEYS=$(cat ~/.ssh/id_rsa.pub)
+    -p ${SSH_PORT}:22
+    -v ~/.ssh/id_rsa.pub:/authorized_ssh_keys:ro
     expelledboy/ssh-server:latest
 ```
 
 **Connect to the container**
 
 ```bash
-ssh -p 2222 ssh@localhost
+ssh -i ~/.ssh/id_rsa -p ${SSH_PORT} ssh@localhost
 ```
 
 **Copy files to the container**
 
 ```bash
-scp -P 2222 file.txt ssh@localhost:/home/ssh/
+ssh -i ~/.ssh/id_rsa -P ${SSH_PORT} example.txt ssh@localhost
 ```
 
 ## Environment variables
